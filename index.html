@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Border Animation</title>
+  <style>
+    *{
+  margin: 0;
+  padding: 0;  
+}
+html{
+  font-family: 'Times New Roman', Times, serif;
+  color: #f0f0f0;
+}
+body{
+  min-height: 100vh;
+  background: #ffffff;
+  color: #000000;
+  align-content: center;
+}
+h1{
+  color: white;
+}
+.card{
+  margin: 0 auto;
+  padding: 30px;
+  width: 800px;
+  background: #6bbfff;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+}
+
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card::after, .card::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+  animation: 3s spin linear infinite;
+}
+.card::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+@keyframes spin{
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>MASTERING DIE-CASTING TECHNOLOGY</h1>
+    <p>Challenged to become the world’s FASTEST mould designer and manufacturer.</p>
+    <p>A medium company but already with a GLOBAL presence.</p>
+    <p>An ECO-FRIENDLY die-casting company for a brighter future.</p>
+  </div>
+</body>
+</html>
